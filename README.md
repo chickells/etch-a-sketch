@@ -10,3 +10,10 @@ Objectives:
 (Extra Credit)
 - Optimize for mobile using finger instead of mouse
 - Stylize so it doesn't look like trash
+
+-------------------------------------
+
+Rainbow Function:
+-create code that adds 18* to Hue in H, S, L color code format that it takes 20 clicks (or pixels) to go through the entire rainbow and leave a trail
+-function would be nextColor() and it would take in color and add 18 to H.  Once it reaches 360+, reset to Number % 360, ie the remainder of XXX - 360.
+-**can be any number, but this will progressively rotate through hue
