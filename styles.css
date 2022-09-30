@@ -11,22 +11,25 @@ body, html {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, 120px);
-    grid-template-rows: repeat(5, 120px);
+    width: 500px;
+    min-height: 500px;
+    grid-template-columns: 0px;
+    grid-template-rows: 0px;
     background-color: aqua;
     border: solid;
     border-color: red;
     border-radius: 1px;
 }
 
+.cell:hover {
+    background-color: blue;
+}
+
 .cell, span {
-    /* height: 5px;
-    width: 5px; */
     background-color: coral;
-    border: solid;
-    border-radius: 1px;
 }
 
 .tasks {
     padding-top: 500px;
+    width: 600px;
 }
