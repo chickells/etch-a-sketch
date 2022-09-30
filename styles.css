@@ -21,9 +21,9 @@ body, html {
     border-radius: 1px;
 }
 
-.cell:hover {
+/* .cell:hover {
     background-color: blue;
-}
+} */
 
 .cell, span {
     background-color: coral;

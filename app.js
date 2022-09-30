@@ -1,7 +1,7 @@
 // grid size
 
 const grid = document.querySelector('.grid')
-let size = prompt('How big?')
+let size = prompt('How big? (Max 96)')
 
 function setupGrid(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
@@ -27,16 +27,46 @@ setupGrid(size)
 
 
 
+// sense if mouseclick is holding down anywhere on screen
+let isHolding = false;
 
+window.addEventListener('mousedown', function () {
+    isHolding = true;
+    console.log(isHolding);
+})
+
+window.addEventListener('mouseup', function () {
+    isHolding = false;
+    console.log(isHolding);
+})
+
+// entirely prohibits drag n drop
+// PAIRED WITH "DRAGGABLE=FALSE" ON DIV.GRID
+grid.addEventListener('dragstart', (e) => {
+    e.preventDefault()
+})  
+grid.addEventListener('drop', (e) => {
+    e.preventDefault()
+})
+
+
+// change color on mousedown
 const cells = document.querySelectorAll('.cell')
 console.log(cells);
-
-// change color on click
 cells.forEach (function (cell) {
-    cell.addEventListener('click', function() {
-        this.style.backgroundColor = "red";
-    })
+    cell.addEventListener('mouseover', function() {
+        if (isHolding == true) {
+            this.style.backgroundColor = color;
+        }
+    })  
 })
+
+// HOLD FUCKING SHIT IT WORKS 
+// only issue is the 'drag n drop' windows mouse function
+// sometimes it tries to drag whatever i clicked so the arrow gets 
+// all out of whack and i have to let go and click again
+
+
 // HOLY FUCK IT WORKS
 // cells turns into node list (faux array)
 // take that array and run forEach on it
@@ -44,12 +74,7 @@ cells.forEach (function (cell) {
 // to that (anything), and do whatever function you want to it
 // LFG CUNTS
 
+// rainbow color generator
+let color = 'black';
 
-// create rainbow function
 
-
-
-// FUCK THIS SHIT MY BRAIN IS TOAST
-// https://www.w3schools.com/css/css_grid_item.asp
-// JUST USE FUCKING CSS GRID WTF
-// will continue this later lmao
