@@ -32,12 +32,10 @@ let isHolding = false;
 
 window.addEventListener('mousedown', function () {
     isHolding = true;
-    console.log(isHolding);
 })
 
 window.addEventListener('mouseup', function () {
     isHolding = false;
-    console.log(isHolding);
 })
 
 // entirely prohibits drag n drop
@@ -56,6 +54,7 @@ console.log(cells);
 cells.forEach (function (cell) {
     cell.addEventListener('mouseover', function() {
         if (isHolding == true) {
+            makeRainbow()
             this.style.backgroundColor = color;
         }
     })  
@@ -75,6 +74,20 @@ cells.forEach (function (cell) {
 // LFG CUNTS
 
 // rainbow color generator
-let color = 'black';
+let rainbow = 0
+let color = `hsl(${rainbow}, 100%, 50%)`
+console.log(rainbow);
+function makeRainbow () {
+    if (rainbow < 360) {
+        console.log('rainbow = ' + rainbow);
+        rainbow + 20;
+    } else if (rainbow > 360){
+        console.log('hmmm');
+        rainbow - 300;
+    }
+    return rainbow
+}
 
 
+// okay i'm not getting any errors BUT
+// i can't get it to add 20 to rainbow every time the function fires.....fack
