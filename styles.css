@@ -28,10 +28,6 @@ body, html {
     border-radius: 1px;
 }
 
-/* .cell:hover {
-    background-color: blue;
-} */
-
 .cell, span {
     background-color: rgb(233, 233, 233);
 }

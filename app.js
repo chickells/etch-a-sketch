@@ -3,36 +3,24 @@
 // collect grid size via form entry
 
 const grid = document.querySelector('.grid')
-let size = 12
-function sizeInput (form) {
-    grid.innerHTML = ""
-    // resets grid to blank before adding all of the cells
-    // basically erases/resets
-    console.log(form.inputbox.value);
-    let input = form.inputbox.value;
-    size = input;
-    setupGrid(input);
-    loadMouseListener();
-    loadColorChanger()
-}
+let size = ""
+const currentSize = document.getElementById('currentSize')
 
 // script pulled from html
 const getSize = document.getElementById('getSize');
 getSize.addEventListener('submit', (e) => {
     e.preventDefault();
+    grid.innerHTML = ""
+    let input = getSize.inputbox.value;
+    size = input;
+    setupGrid(input);
+    loadMouseListener();
+    loadColorChanger();
     console.log('submitted!');
-    getSize.inputbox.value = ""
+    console.log(getSize.inputbox.value);
+    getSize.inputbox.value = "";
+    currentSize.textContent = `Current Size: ${size} x ${size}`
 });
-  
-// ^^^^^ THESE TWO DO THE SAME SHIT BUT BOTH ARE NECESSARY
-// IDK I DON'T MAKE THE RULES
-// but yeah i'll combine them when my brain is actually working lol
-// GOT THE SUBMIT BUTTON TO WORK VIA 'ENTER' AND VIA CLICK
-// AAAAAND IT CLEARS THE TEXT FIELD WHEN SUBMITTED SO IT LOOKS GOOD
-// god damn theres just so many TINY little things involved with the
-// smallest of processes
-
-
 
 
 // create grid function
