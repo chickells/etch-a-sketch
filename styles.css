@@ -22,7 +22,7 @@ body, html {
     min-height: 500px;
     grid-template-columns: 0px;
     grid-template-rows: 0px;
-    background-color: rgb(190, 190, 190);
+    background-color: rgb(128, 128, 128);
     border: solid;
     border-color: red;
     border-radius: 1px;

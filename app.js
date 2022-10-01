@@ -3,15 +3,34 @@
 // collect grid size via form entry
 
 const grid = document.querySelector('.grid')
-let size = 14
-function submitSize(form) {
-    size = form.inputbox.value;
-    console.log(size);
-  }
+let size = 12
+function sizeInput (form) {
+    grid.innerHTML = ""
+    // resets grid to blank before adding all of the cells
+    // basically erases/resets
+    console.log(form.inputbox.value);
+    let input = form.inputbox.value;
+    size = input;
+    setupGrid(input);
+    loadMouseListener();
+    loadColorChanger()
+}
+
+// script pulled from html
+const getSize = document.getElementById('getSize');
+getSize.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('submitted!');
+    getSize.inputbox.value = ""
+});
   
-// brain is too fried to think about this
-// ref https://www.infoworld.com/article/2077176/using-javascript-and-forms.html
-// https://www.w3schools.com/js/tryit.asp?filename=tryjs_form_submit
+// ^^^^^ THESE TWO DO THE SAME SHIT BUT BOTH ARE NECESSARY
+// IDK I DON'T MAKE THE RULES
+// but yeah i'll combine them when my brain is actually working lol
+// GOT THE SUBMIT BUTTON TO WORK VIA 'ENTER' AND VIA CLICK
+// AAAAAND IT CLEARS THE TEXT FIELD WHEN SUBMITTED SO IT LOOKS GOOD
+// god damn theres just so many TINY little things involved with the
+// smallest of processes
 
 
 
@@ -30,8 +49,8 @@ function setupGrid(size) {
         grid.appendChild(makeCell)
       }
 }
+setupGrid(size);
 
-setupGrid(size)
 
 // ^^^^^^^^ THIS IS HOW IT WORKS YOU CUNT
 // god fucking dammit that shit was so frustrating
@@ -42,38 +61,44 @@ setupGrid(size)
 
 
 // sense if mouseclick is holding down anywhere on screen
-
 let isHolding = false;
-window.addEventListener('mousedown', function () {
-    isHolding = true;
-})
+function loadMouseListener () {    
+    window.addEventListener('mousedown', function () {
+        isHolding = true;
+        
+    })
 
-window.addEventListener('mouseup', function () {
-    isHolding = false;
-})
+    window.addEventListener('mouseup', function () {
+        isHolding = false;
+        
+    })
 
-// entirely prohibits drag n drop
-// PAIRED WITH "DRAGGABLE=FALSE" ON DIV.GRID
-grid.addEventListener('dragstart', (e) => {
-    e.preventDefault()
-})  
-grid.addEventListener('drop', (e) => {
-    e.preventDefault()
-})
-
+    // entirely prohibits drag n drop
+    // PAIRED WITH "DRAGGABLE=FALSE" ON DIV.GRID
+    grid.addEventListener('dragstart', (e) => {
+        e.preventDefault()
+    })  
+    grid.addEventListener('drop', (e) => {
+        e.preventDefault()
+    })
+}
 
 
 // change color on mousedown
-const cells = document.querySelectorAll('.cell')
-cells.forEach (function (cell) {
-    cell.addEventListener('mouseover', function() {
-        if (isHolding == true) {
-            makeRainbow()
-            this.style.backgroundColor = color;
-        }
-        
-    })  
-})
+function loadColorChanger () {
+    const cells = document.querySelectorAll('.cell')
+    cells.forEach (function (cell) {
+        cell.addEventListener('mouseover', function() {
+            if (isHolding == true) {
+                makeRainbow()
+                this.style.backgroundColor = color;
+            }
+            
+        })  
+    })
+}
+loadColorChanger()
+
 
 // HOLD FUCKING SHIT IT WORKS 
 // only issue is the 'drag n drop' windows mouse function
