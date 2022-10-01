@@ -18,9 +18,11 @@
         <!-- hero -->
         <div class="hero">
             <h1>Etch-a-Sketch</h1>
-            <h4>Choose grid size</h4>
-            <p>Enter size here (this will be a form)</p>
-            <button>Create Grid</button>
+            <form name="gridSize" action="" method="get">
+                <h4>How many blocks wide do you want your canvas?</h4>
+                <input type="text" name="inputBox" id="gridSizeForm">
+                <input type="button" name="button "value="Create Canvas" onClick="submitSize(this.form)">
+            </form>
         </div>
 
         <!-- actual grid -->

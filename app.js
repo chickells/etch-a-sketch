@@ -1,8 +1,22 @@
-// grid size
+
+
+// collect grid size via form entry
 
 const grid = document.querySelector('.grid')
-let size = prompt('How big? (Max 96)')
+let size = 14
+function submitSize(form) {
+    size = form.inputbox.value;
+    console.log(size);
+  }
+  
+// brain is too fried to think about this
+// ref https://www.infoworld.com/article/2077176/using-javascript-and-forms.html
+// https://www.w3schools.com/js/tryit.asp?filename=tryjs_form_submit
 
+
+
+
+// create grid function
 function setupGrid(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -28,8 +42,8 @@ setupGrid(size)
 
 
 // sense if mouseclick is holding down anywhere on screen
-let isHolding = false;
 
+let isHolding = false;
 window.addEventListener('mousedown', function () {
     isHolding = true;
 })
@@ -48,15 +62,16 @@ grid.addEventListener('drop', (e) => {
 })
 
 
+
 // change color on mousedown
 const cells = document.querySelectorAll('.cell')
-console.log(cells);
 cells.forEach (function (cell) {
     cell.addEventListener('mouseover', function() {
         if (isHolding == true) {
             makeRainbow()
             this.style.backgroundColor = color;
         }
+        
     })  
 })
 
@@ -74,20 +89,24 @@ cells.forEach (function (cell) {
 // LFG CUNTS
 
 // rainbow color generator
+
 let rainbow = 0
 let color = `hsl(${rainbow}, 100%, 50%)`
-console.log(rainbow);
+let x = ""
 function makeRainbow () {
     if (rainbow < 360) {
-        console.log('rainbow = ' + rainbow);
-        rainbow + 20;
-    } else if (rainbow > 360){
-        console.log('hmmm');
-        rainbow - 300;
+        x = rainbow + 20;
+    } else if (rainbow >= 360){
+        x = rainbow - 340;
     }
-    return rainbow
+    color = `hsl(${x}, 100%, 50%)`
+    rainbow = x
 }
+// so rainbow was never actually increasing because it was increasing 
+// within that 'if' block BUT NEVER ESCAPING
+// so we use a random variable to HOLD that value
+// then set color with that value
+// and set rainbow to that value for our starting position for next time
+// GOD DAMN I'M A GENIUS FUCK
+// lol time to polish
 
-
-// okay i'm not getting any errors BUT
-// i can't get it to add 20 to rainbow every time the function fires.....fack

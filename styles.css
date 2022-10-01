@@ -9,13 +9,20 @@ body, html {
     height: 100%;
 }
 
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
 .grid {
     display: grid;
     width: 500px;
     min-height: 500px;
     grid-template-columns: 0px;
     grid-template-rows: 0px;
-    background-color: aqua;
+    background-color: rgb(190, 190, 190);
     border: solid;
     border-color: red;
     border-radius: 1px;
@@ -26,7 +33,7 @@ body, html {
 } */
 
 .cell, span {
-    background-color: coral;
+    background-color: rgb(233, 233, 233);
 }
 
 .tasks {
